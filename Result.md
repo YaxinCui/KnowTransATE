@@ -1,5 +1,14 @@
-### xlm-roberta-base类
+## XLM-Roberta类模型
+使用2.5TB过滤的CommonCrawl数据训练，包含了100种语言。
+在XLU（跨语言理解）上取得了SOTA。
 
+xlmr-base：使用bert-base的架构，有250M参数。
+xlmr-large：使用bert-large的架构，有560M参数，2倍xlmr-base。
+xlmr-xl：layers=36, model_dim=2560，有3.5B参数，10倍xlmr-base。
+xlmr-xxl：layers=48，model_dim=4096，有10.7B参数，30倍xlmr-base。
+用的都是同一套分词器。
+
+### xlm-roberta-base类
 Records/cardiffnlp/twitter-xlm-roberta-base-sentiment
     En2En   En2Es   En2Fr
 0  78.818  71.862  67.244
@@ -44,7 +53,20 @@ Records/xlm-roberta-large-finetuned-conll03-english
 2   3.000   3.000   3.000
 
 
-# mBert类
+## BERT类
+24 smaller BERT models，只使用英语训练。效果也挺好。
+
+提出了whole word masking models。
+
+bert-large 14层，1024-hidden，16-heads，340M参数。
+
+使用whole word masking技术，效果比原始随机mask有提升.
+
+BERT-Base，multilingual cased：104种语言，12层，768-hidden，12个head，110M参数。
+
+BERT-Base，Chinese
+
+### mBert类
 
 Records/bert-base-multilingual-uncased
     En2En   En2Es   En2Fr
@@ -71,28 +93,7 @@ Records/google/rembert
 2   3.000   3.000   3.000
 
 
-# roberta-large类
-Records/roberta-large
-    En2En   En2Es   En2Fr
-0  81.269  64.335  56.028
-1   1.518   2.776   4.131
-2   3.000   3.000   3.000
-
-Records/this-is-real/mrc-pretrained-roberta-large-1
-    En2En   En2Es   En2Fr
-0  70.529  17.274  18.594
-1   0.000   0.000   0.000
-2   1.000   1.000   1.000
-
-# albert类
-Records/albert-base-v2
-    En2En  En2Es   En2Fr
-0  78.604  3.838  21.421
-1   1.186  1.669   6.987
-2   5.000  5.000   5.000
-
-
-# bert-base类
+### bert-base类
 Records/activebus/BERT_Review
     En2En   En2Es   En2Fr
 0  81.839  10.122  33.155
@@ -136,12 +137,37 @@ Records/Tahsin/BERT-finetuned-conll2003-POS
 2   3.000  3.000   3.000
 
 
-# bert-large类
+### bert-large类
 Records/bert-large-uncased
     En2En   En2Es   En2Fr
 0  78.571  16.101  28.883
 1   0.973   8.591   6.349
 2   3.000   3.000   3.000
+
+## roberta-base
+只用MLM训练
+使用了BookCorpus，英语维基百科，CC-News，OpenWebText,Stories数据训练。
+
+### roberta-large类
+Records/roberta-large
+    En2En   En2Es   En2Fr
+0  81.269  64.335  56.028
+1   1.518   2.776   4.131
+2   3.000   3.000   3.000
+
+Records/this-is-real/mrc-pretrained-roberta-large-1
+    En2En   En2Es   En2Fr
+0  70.529  17.274  18.594
+1   0.000   0.000   0.000
+2   1.000   1.000   1.000
+
+### albert类
+Records/albert-base-v2
+    En2En  En2Es   En2Fr
+0  78.604  3.838  21.421
+1   1.186  1.669   6.987
+2   5.000  5.000   5.000
+
 
 # albert类
 Records/albert-base-v2
@@ -168,7 +194,6 @@ Records/google/electra-base-discriminator
 0  80.558  8.084  27.262
 1   1.088  5.154   8.196
 2   3.000  3.000   3.000
-
 
 # electra-small类
 Records/google/electra-small-discriminator
